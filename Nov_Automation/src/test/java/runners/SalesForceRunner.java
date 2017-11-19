@@ -9,9 +9,12 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(format = {"pretty", "html:target/cucumber-html-report", "json:target/cucumber.json"},
                         features = {"src/test/resources/features" },
                         glue = { "sfdc.automation.steps" },
-                        tags = {"@current"},
-                        monochrome = true ,
-                        dryRun = false)
+                        tags = {"@current"}
+                        //monochrome = true ,
+                       // dryRun = false
+                        )
+                        
+                        
 public class SalesForceRunner {
  //sending to git
     }
