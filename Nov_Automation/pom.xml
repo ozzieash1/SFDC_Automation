@@ -44,11 +44,11 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-testng -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-testng</artifactId>
 			<version>1.2.4</version>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
