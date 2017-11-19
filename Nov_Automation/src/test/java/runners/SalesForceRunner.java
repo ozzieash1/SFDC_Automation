@@ -16,15 +16,6 @@ import cucumber.api.junit.Cucumber;
                         
                         
 public class SalesForceRunner {
- //sending to git
+
     }
 
-
-// @BeforeClass
-/*public static void setup() {
-    String reportsOutput = LocalConfUtils.getRootDir() + File.separator + "html-reports";
-    EcrmConfUtils.setBaseResultsDir(reportsOutput);*/
-
-
-//import com.fanniemae.ecrm.automation.libs.EcrmConfUtils;
-//import com.fanniemae.testeng.automation.utils.LocalConfUtils;
