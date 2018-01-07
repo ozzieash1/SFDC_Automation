@@ -1,4 +1,4 @@
-@current 
+#@runme 
 Feature: Account function
 Scenario: Varify create new account into the Sales Force
 Given user opens a browser 
@@ -8,7 +8,8 @@ When user enters user name as "USER_ULFAT" and password as "PASSWORD_ULFAT"
 And user click on LogIn
 And user click on Accounts tab
 And user clicks on new button
+#//INPUT[@value=' New ']
 And user enters "Capital One" as Account name
 And user clicks on Save button
-And user validates newly created contact "Capital One"
+#And user validates newly created contact "Capital One"
 Then user logs out of the current application 
