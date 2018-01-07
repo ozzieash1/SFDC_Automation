@@ -8,9 +8,10 @@ public interface Lead {
 
 	void enterLeadName(String lastName);
 
-	void entersCompanyName();
+	void entersCompanyName(String companyName);
 
 	void clickOnSave();
+	void clickOnStatus() ;
 	
 	//sending to github
 }
