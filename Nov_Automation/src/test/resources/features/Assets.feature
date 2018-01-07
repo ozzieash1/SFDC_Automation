@@ -11,6 +11,6 @@ And user clicks on new Assetbutton
 #//INPUT[@value=' New ']
 And user enters "MoneyMarket001" as Asset Name
 #xPathAssetName = //INPUT[@id='Name']
-And user clicks on Save button
+And user clicks on Assets Save button
 #And user validates newly created Lead
 Then user logs out of the current application 
