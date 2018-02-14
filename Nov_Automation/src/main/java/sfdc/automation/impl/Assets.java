@@ -1,6 +1,6 @@
 package sfdc.automation.impl;
 
-public interface Lead {
+public interface Assets {
 
 	void clickOnLeadsTab();
 
@@ -13,10 +13,9 @@ public interface Lead {
 	void clickOnSave();
 	void clickOnStatus() ;
 
-	void selectFromLeadSourceDropdown(String leadSource);
-	//void selectFromIndustryDropdown(String industry);
+	void clickOnAssetstab();
 
-	void selectFromLeadIndustryDropdown(String leadIndustry);
+	void clickOnNewButtonAsset();
 	
 	//sending to github
 }

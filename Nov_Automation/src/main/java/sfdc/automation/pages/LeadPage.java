@@ -18,12 +18,14 @@ public class LeadPage {
 	
 	String xPath_NewButton = ".//input[@title='New']";
 	String xPath_Password = ".//input[contains(@name,'pw')]";
-	String xPath_LeadLastName = ".//input[@id='name_lastcon2']";
-	String xPath_CompanyName = ".//input[@id='lea3']";
+	//String xPath_LeadLastName = ".//input[@id='name_lastcon2']";
+	String xPath_LeadLastName =".//INPUT[@id='name_lastlea2']";
+	String xPath_CompanyName = ".//input[@id='lea3']";  
 	String xPath_UserNavButton = ".//span[@id='userNavLabel']";
 	String xPath_LeadSaveBtn = ".//input[@title='Save']";
-	
-	
+	String xPath_Status = ".//SELECT[@id='lea13']";
+	String xPath_leadSource = "//SELECT[@id='lea5']";
+	String xPath_leadindustry = "//SELECT[@id='lea6']";
 	
 
 	public void clickOnLeadsTab() {
@@ -41,8 +43,8 @@ public class LeadPage {
 		
 	}
 
-	public void entersCompanyName() {
-		seleniumUtil.clickElementByXpath(xPath_CompanyName);
+	public void entersCompanyName(String companyName) {
+		seleniumUtil.sendKeysByXPath(xPath_CompanyName, companyName);
 		
 	}
 
@@ -52,8 +54,23 @@ public class LeadPage {
 	}
 
 
+	public void clickOnStatus() {
+		seleniumUtil.clickElementByXpath(xPath_Status);
+		
+	}
+
+	public void selectFromLeadSourceDropdown(String leadSource) {
+
+		seleniumUtil.handleDropDownItems(xPath_leadSource,leadSource );
+	}
+	
+	public void selectFromLeadIndustryDropdown(String leadIndustry) {
+
+		seleniumUtil.handleDropDownItems(xPath_leadindustry,leadIndustry );
+	}
 
 
+	//selectFromLeadIndustryDropdown
 
 
 }

@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import sfdc.automation.utils.SeleniumUtil;
 
-public class AccountsPage {
+public class ReportsPage {
 
 	SeleniumUtil seleniumUtil = SeleniumUtil.getSeleniumUtil();
 
@@ -30,6 +30,8 @@ public class AccountsPage {
 	String xPath_customerPriority = "//SELECT[@id='00N4100000PpGoe']";
 	String xPath_AccountPageTextHome = "//H2[@class='pageDescription'][text()=' Home']";
 	String xPath_AccountCreateNewView = "//A[@href='/ui/list/FilterEditPage?ftype=a&retURL=%2F001&cancelURL=%2F001%2Fo'][text()='Create New View']";
+	
+	String xPath_Reports_Tab = ".//ul/li/a[contains(@title,'Reports Tab')]";
 	String xPath_Text_RecentAccount = "(//H3[text()='Recent Accounts'])[1]";
 	String xPath_Text_Reports = "//H3[@class='lbHeader'][text()='Reports']";
 	String xPath_Link_GoToReports = "//A[@href='/00O/o?entityType=00O'][text()='Go to Reports']";
@@ -40,10 +42,24 @@ public class AccountsPage {
 	String xPath_Grand_Total_Accts = "//STRONG[text()='Grand Totals (30 records)']";
 	
 	
-	public void clickOnAccountsTab() {
-		seleniumUtil.clickElementByXpath(".//ul/li/a[contains(@title,'Accounts Tab')]");
-
+	
+	public void clickOnReportsTab() {
+		seleniumUtil.clickElementByXpath(xPath_Reports_Tab);
+		
 	}
+	
+	public void seesReportsPageText(String rptPageText) {
+		// TODO Auto-generated method stub
+		seleniumUtil.testElementText(xPath_Text_Reports);
+	}
+
+	
+	
+	
+	/*public void clickOnAccountsTab() {
+		seleniumUtil.clickElementByXpath(".//ul/li/a[contains(@title,'Reports Tab')]");
+
+	}*/
 
 	public void clickOnNewButton() {
 		seleniumUtil.clickElementByXpath(xPath_NewButton);
@@ -96,5 +112,37 @@ public class AccountsPage {
 public void testAccountPagetext(String text){
 	seleniumUtil.testElementText(xPath_AccountPageTextHome);
 }
+
+public void clickOnRReport() {
+	seleniumUtil.clickElementByXpath(xPath_Reports_Dashboards);
+	
+}
+
+public void viewsReportStatusComplete() {
+	seleniumUtil.testReportstatusElementText(xPath_RReport_Status);
+
+}
+
+public void viewsNewAcctNameInRpt(String arg1) {
+	
+	seleniumUtil.testElementText(xPath_Capital_One);
+	
+}
+
+
+
+
+
+public void viewsGrandTotalRecords(String numberOfAccts) {
+	seleniumUtil.testElementText(xPath_Grand_Total_Accts);
+	
+}
+
+
+
+
+
+
+
 
 }

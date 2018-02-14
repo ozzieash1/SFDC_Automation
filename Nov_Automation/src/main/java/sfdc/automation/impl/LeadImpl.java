@@ -26,18 +26,35 @@ public class LeadImpl implements Lead  {
 	}
 
 	@Override
-	public void entersCompanyName() {
-		leadPage.entersCompanyName();
+	public void entersCompanyName(String companyName) {
+		leadPage.entersCompanyName(companyName);
 		
 	}
 
+	public void clickOnStatus() {
+		leadPage.clickOnStatus();
+		
+	}
+	
+	
+	
 	@Override
 	public void clickOnSave() {
 		leadPage.clickOnSave();
 		
 	}
+
+	@Override
+	public void selectFromLeadSourceDropdown(String leadSource) {
+		leadPage.selectFromLeadSourceDropdown(leadSource);
+		
+	}
 	
+
+	@Override
+	public void selectFromLeadIndustryDropdown(String leadIndustry) {
 	
-	
+		leadPage.selectFromLeadIndustryDropdown(leadIndustry);
+	}
 
 }

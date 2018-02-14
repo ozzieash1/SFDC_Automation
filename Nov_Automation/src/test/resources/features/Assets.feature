@@ -1,4 +1,4 @@
-@currentt @runme3 
+@current
 Feature: Assets function
 Scenario: Varify creating a new Asset into the Sales Force
 Given user opens a browser 

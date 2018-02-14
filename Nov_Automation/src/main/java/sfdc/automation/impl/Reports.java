@@ -1,8 +1,15 @@
 package sfdc.automation.impl;
 
-public interface Accounts {
+public interface Reports {
+	void clickOnReportsTab();
+	void seesReportsPageText(String rptPageText);
+	void clickOnRReport();
+	void viewsReportStatusComplete();
+	void viewsNewAcctNameInRpt(String arg1);
+	void viewsGrandTotalRecords(String numberOfAccts);
+	
 
-	void clickOnAccountsTab();
+	/*void clickOnAccountsTab();
 
 	void clickOnNewButton();
 
@@ -31,6 +38,6 @@ public interface Accounts {
 	void testJavaScriptCalls();
 
 	void testAccountPagetext(String text);
-	
+	*/
 	
 }

@@ -10,18 +10,55 @@ import sfdc.automation.impl.ContactsImpl;
 import sfdc.automation.impl.Lead;
 import sfdc.automation.impl.LeadImpl;
 import sfdc.automation.impl.LogInImpl;
+import sfdc.automation.impl.ReportsImpl;
 
-public class AccountsSteps {
+public class ReportsSteps {
 
-	Accounts accountsImpl = new AccountsImpl();
+	ReportsImpl reportsImpl = new ReportsImpl();
+	
+	
+	@When("^user click on Reports tab$")
+	public void user_click_on_Reports_tab() throws Throwable {
+		reportsImpl.clickOnReportsTab();
+	
+	
+	}
 
-	@And("^user click on Accounts tab$")
+	@When("^user sees Reports Page text \"([^\"]*)\"$")
+	public void user_sees_Reports_Page_text(String RptPageText) throws Throwable {
+		reportsImpl.seesReportsPageText(RptPageText);
+	}
+
+	@When("^user clicks on RReport$")
+	public void user_clicks_on_RReport() throws Throwable {
+		reportsImpl.clickOnRReport();
+	}
+
+	@Then("^user views Report status complete$")
+	public void user_views_Report_status_complete() throws Throwable {
+		reportsImpl.viewsReportStatusComplete();
+	}
+
+	@Then("^user views Wells Fargo Account Name in Report$")
+	public void user_views_Wells_Fargo_Account_Name_in_Report(String arg1) throws Throwable {
+		reportsImpl.viewsNewAcctNameInRpt(arg1);
+	}
+
+	@Then("^user views Grand Total \"([^\"]*)\" records$")
+	public void user_views_Grand_Total_records(String numberOfAccts) throws Throwable {
+		reportsImpl.viewsGrandTotalRecords(numberOfAccts);
+	}
+
+
+	
+//-------------------------
+	/*@And("^user click on Accounts tab$")
 	public void clickOnAccountsTab() throws Throwable {
 
 		accountsImpl.clickOnAccountsTab();
-	}
+	}*/
 
-	@And("^user test JavaScript Calls$")
+/*	@And("^user test JavaScript Calls$")
 	public void testJavaScriptCalls() throws Throwable {
 
 		accountsImpl.testJavaScriptCalls();
@@ -72,7 +109,7 @@ public class AccountsSteps {
 	public void user_selects_option_from_customer_priority_dropdown(String customerPrioritySelected) throws Throwable {
 		accountsImpl.selectFromCustomerPriorityDropdown(customerPrioritySelected);
 
-	}
+	}*/
 
 }
 
