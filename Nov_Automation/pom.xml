@@ -44,11 +44,8 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-testng -->
-		<!-- <dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-testng</artifactId>
-			<version>1.2.4</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>info.cukes</groupId> <artifactId>cucumber-testng</artifactId> 
+			<version>1.2.4</version> </dependency> -->
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -90,11 +87,7 @@
 			<version>2.2.0</version>
 		</dependency>
 
-
-
 	</dependencies>
-
-
 
 	<build>
 
@@ -109,9 +102,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
-
-
 
 </project>
