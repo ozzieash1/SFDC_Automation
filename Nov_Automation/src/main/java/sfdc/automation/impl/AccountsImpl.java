@@ -107,4 +107,44 @@ public class AccountsImpl implements Accounts {
 		
 	}
 
+	public void clicksOnCreateNewView() {
+		accountsPage.clicksOnCreateNewView();
+		
+	}
+
+	public void entersNewViewName(String newViewName) {
+		accountsPage.entersNewViewName(newViewName);
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void clicksOnSaveOnCreateNewView() {
+		accountsPage.clicksOnSaveOnCreateNewView();
+		
+	}
+
+	public void selectsnewlyCreatedView() {
+		accountsPage.selectsnewlyCreatedView();
+		
+		
+	}
+
+	public void clicksOnViewName() {
+		accountsPage.clicksOnViewName();
+		
+		
+	}
+
+	public void getsLinksDisplayed() {
+		accountsPage.getsLinksDisplayed();
+		
+	}
+
+	public void testsElementStyleCSS() {
+		accountsPage.testsElementStyleCSS();
+		
+	}
+
+
+
 }

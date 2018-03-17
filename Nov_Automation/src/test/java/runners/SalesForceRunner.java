@@ -8,11 +8,13 @@ import cucumber.api.junit.Cucumber;
 
 @CucumberOptions(format = { "pretty", "html:target/cucumber-html-report", "json:target/cucumber.json" }, features = {
 		"src/test/resources/features" }, glue = { "sfdc.automation.steps" },
-		tags = {"@regression"}
+				tags = {"@current99"}
+				
+		//tags = {"@regression"}
 		//tags = { "@runme4","current" }
         // tags = { "@runme3" }
-// monochrome = true ,
-// dryRun = false
+	    // monochrome = true ,
+       // dryRun = false
 )
 
 public class SalesForceRunner {

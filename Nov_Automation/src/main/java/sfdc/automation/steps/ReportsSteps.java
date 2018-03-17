@@ -39,7 +39,7 @@ public class ReportsSteps {
 		reportsImpl.viewsReportStatusComplete();
 	}
 
-	@Then("^user views Wells Fargo Account Name in Report$")
+	@Then("^user views \"([^\"]*)\" in Report$")
 	public void user_views_Wells_Fargo_Account_Name_in_Report(String arg1) throws Throwable {
 		reportsImpl.viewsNewAcctNameInRpt(arg1);
 	}

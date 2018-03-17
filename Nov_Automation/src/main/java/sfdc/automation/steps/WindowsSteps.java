@@ -31,4 +31,22 @@ public class WindowsSteps {
 		windowsImpl.validatesHomeWindowJavaScriptCode();
 	}
 
+	@And("^user tests pop-up window by content$")
+	public void testPopupWindowByContent()throws Throwable{
+		windowsImpl.clickOnlighteningMigrationButton();
+	}
+
+
+	@And("^user clicks on Search button$")
+	public void ClickOnSearchButton()throws Throwable{
+		windowsImpl.ClickOnSearchButton();
+	}
+
+	
+	
+
+
+	//handleSearchByTitle
+
+
 }

@@ -22,9 +22,7 @@ public class LogInPage {
 	String xPath_LogInButton = ".//input[@id='Login']";
 	String xPath_UserNavButton = ".//span[@id='userNavLabel']";
 	String xPath_LogOutButton = ".//a[@title='Logout']";
-	
 
-	
 	/**
 	 * @param url
 	 *            This method will use Selenium to open the URL in configured
@@ -35,7 +33,7 @@ public class LogInPage {
 	}
 
 	public void logInSalesForce(String userName, String passWord) {
-	Properties userProperty = new  Properties();
+		Properties userProperty = new Properties();
 		try {
 			FileInputStream objfile = new FileInputStream("user.properties");
 			userProperty.load(objfile);
@@ -48,8 +46,7 @@ public class LogInPage {
 		}
 		// seleniumUtil.logInSalesForce( userName, passWord);
 		// Enter the user name using xPath
-		
-		
+
 		seleniumUtil.sendKeysByXPath(xPath_UserName, userProperty.getProperty(userName));
 		seleniumUtil.sendKeysByXPath(xPath_Password, userProperty.getProperty(passWord));
 

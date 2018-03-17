@@ -29,9 +29,17 @@ public class AccountsPage {
 	String xPath_ownership = "//SELECT[@id='acc14']";
 	String xPath_customerPriority = "//SELECT[@id='00N4100000PpGoe']";
 	String xPath_AccountPageTextHome = "//H2[@class='pageDescription'][text()=' Home']";
+	//H2[@class='pageDescription'][text()=' Home']
+	
 	String xPath_AccountCreateNewView = "//A[@href='/ui/list/FilterEditPage?ftype=a&retURL=%2F001&cancelURL=%2F001%2Fo'][text()='Create New View']";
+	//A[@href='/ui/list/FilterEditPage?ftype=a&retURL=%2F001&cancelURL=%2F001%2Fo'][text()='Create New View']
+	String xPath_ViewnameInputField = "//INPUT[@id='fname']";
+	String xPath_CreateNewViewsaveBtn = "(//INPUT[@value=' Save '])[1]";
+	
+	
 	String xPath_Text_RecentAccount = "(//H3[text()='Recent Accounts'])[1]";
-	String xPath_Text_Reports = "//H3[@class='lbHeader'][text()='Reports']";
+	String xPath_Text_Reports="//*[@id='toolsContent']/tbody/tr/td[1]/div/div/h3";
+	//String xPath_Text_Reports = "//H3[@class='lbHeader'][text()='Reports']";
 	String xPath_Link_GoToReports = "//A[@href='/00O/o?entityType=00O'][text()='Go to Reports']";
 	String xPath_Reports_Dashboards = "//STRONG[text()='Grand Totals (30 records)']";
 	String xPath_RReport1 = "//SPAN[text()='RReport1']";
@@ -94,7 +102,46 @@ public class AccountsPage {
 	}
 
 public void testAccountPagetext(String text){
-	seleniumUtil.testElementText(xPath_AccountPageTextHome);
+	seleniumUtil.testAccountPageText(xPath_AccountPageTextHome);
+}
+
+public void clicksOnCreateNewView() {
+	seleniumUtil.clickElementByXpath(xPath_AccountCreateNewView);
+	
+}
+
+public void entersNewViewName(String newViewName) {
+	seleniumUtil.sendKeysByXPath(xPath_ViewnameInputField, "View");
+	// TODO Auto-generated method stub
+	
+}
+
+public void clicksOnSaveOnCreateNewView() {
+	seleniumUtil.clickElementByXpath(xPath_CreateNewViewsaveBtn);
+	// TODO Auto-generated method stub
+	
+}
+
+public void selectsnewlyCreatedView() {
+	seleniumUtil.handleDropDownItemss();
+	// TODO Auto-generated method stub
+	
+}
+
+public void clicksOnViewName() {
+	seleniumUtil.clickElementByXpath(xPath_ViewnameInputField);
+	
+}
+
+public void getsLinksDisplayed() {
+	seleniumUtil.getsLinksDisplayed();
+	// TODO Auto-generated method stub
+	
+}
+
+public void testsElementStyleCSS() {
+	seleniumUtil.testsElementStyleCSS();
+	
 }
 
 }

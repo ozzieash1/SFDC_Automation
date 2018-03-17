@@ -35,7 +35,9 @@ public class HomePage {
 			} else {
 				System.out.println("Tab is Not displayed   " + tabName);
 				
-				//Assert.fail();
+				//Not working it is not showing up the tabs that is not displayed
+				
+				Assert.fail();
 		
 			}
 

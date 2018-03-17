@@ -33,15 +33,18 @@ public class ReportsPage {
 	
 	String xPath_Reports_Tab = ".//ul/li/a[contains(@title,'Reports Tab')]";
 	String xPath_Text_RecentAccount = "(//H3[text()='Recent Accounts'])[1]";
-	String xPath_Text_Reports = "//H3[@class='lbHeader'][text()='Reports']";
+	//String xPath_Text_Reports = "//H3[@class='lbHeader'][text()='Reports']";
 	String xPath_Link_GoToReports = "//A[@href='/00O/o?entityType=00O'][text()='Go to Reports']";
 	String xPath_Reports_Dashboards = "//STRONG[text()='Grand Totals (30 records)']";
 	String xPath_RReport1 = "//SPAN[text()='RReport1']";
+	//SPAN[text()='RReport1']
 	String xPath_RReport_Status = "//DIV[@id='status']";
 	String xPath_Capital_One = "//A[@href='/0014100001QPtPC'][text()='Capital ONE']";
-	String xPath_Grand_Total_Accts = "//STRONG[text()='Grand Totals (30 records)']";
-	
-	
+	String xPath_Wells_Fargo = "//A[@href='/0014100001SVEWM'][text()='Wells Fargo']";
+	String xPath_Grand_Total_Accts = "//STRONG[text()='Grand Totals (48 records)']";
+	//STRONG[text()='Grand Totals (41 records)']
+	//STRONG[text()='Grand Totals (47 records)']
+	String xPath_Text_Reports = "//H1[@class='pageType noSecondHeader'][contains(text(),'Reports ')]";
 	
 	public void clickOnReportsTab() {
 		seleniumUtil.clickElementByXpath(xPath_Reports_Tab);
@@ -114,7 +117,7 @@ public void testAccountPagetext(String text){
 }
 
 public void clickOnRReport() {
-	seleniumUtil.clickElementByXpath(xPath_Reports_Dashboards);
+	seleniumUtil.clickElementByXpath(xPath_RReport1);
 	
 }
 
@@ -125,7 +128,7 @@ public void viewsReportStatusComplete() {
 
 public void viewsNewAcctNameInRpt(String arg1) {
 	
-	seleniumUtil.testElementText(xPath_Capital_One);
+	seleniumUtil.testElementTextOnReport(xPath_Wells_Fargo);
 	
 }
 
@@ -134,7 +137,7 @@ public void viewsNewAcctNameInRpt(String arg1) {
 
 
 public void viewsGrandTotalRecords(String numberOfAccts) {
-	seleniumUtil.testElementText(xPath_Grand_Total_Accts);
+	seleniumUtil.testElementReportGrandTotalText(xPath_Grand_Total_Accts);
 	
 }
 

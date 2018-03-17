@@ -25,4 +25,16 @@ public class WindowsImpl implements Windows {
 
 	}
 
+	public void clickOnlighteningMigrationButton() {
+		windowsPage.ClickOnlighteningMigrationButton();
+		
+	}
+
+	public void ClickOnSearchButton() {
+		windowsPage.ClickOnSearchButton();
+		
+	}
+
+
+
 }

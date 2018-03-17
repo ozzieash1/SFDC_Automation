@@ -30,4 +30,15 @@ public class WindowsPage {
 
 	}
 
+	
+
+	public void ClickOnlighteningMigrationButton() {
+		seleniumUtil.testWindowPopupUsingContents();
+		
+	}
+
+	public void ClickOnSearchButton() {
+		seleniumUtil.handleSearchByTitle();
+	}
+
 }

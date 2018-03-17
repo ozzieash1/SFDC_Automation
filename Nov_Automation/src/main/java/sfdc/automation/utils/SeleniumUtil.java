@@ -3,6 +3,7 @@ package sfdc.automation.utils;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,7 +43,7 @@ public class SeleniumUtil {
 	 * I will create a null object of WebDriver Interface since WebDriver is an
 	 * Interface And we can't instantiate an object of an Interface. So, we will
 	 * instantiate it whenever required by implementation of WebDriver Interface
-	 * that is ChromeDriver/whichever as we see on around line #47 webDriver =
+	 * that is ChromeDriver/whichever as we see on around line #71 webDriver =
 	 * new ChromeDriver(); webDriver = new FirefoxDriver();
 	 */
 
@@ -55,12 +56,12 @@ public class SeleniumUtil {
 	 * Level. To achieve this we will be using Singleton Java Pattern. In this
 	 * pattern I will make SeleniumUtil Constructor as private so that no one
 	 * can create its object and I will create a static method in SeleniumUtil
-	 * to get the object of SeleniumUtil Class. And in this method, I will
-	 * check whether I already have object of SeleniumUtil class or not. If it
-	 * already exists, then I will return the object else if I am 
-	 * initializing it for the first time I will create a new object and return
-	 * it. So,if anyone wants to create the object of the class SeleniumUtil,
-	 * he/she can use the static method I created
+	 * to get the object of SeleniumUtil Class. And in this method, I will check
+	 * whether I already have object of SeleniumUtil class or not. If it already
+	 * exists, then I will return the object else if I am initializing it for
+	 * the first time I will create a new object and return it. So,if anyone
+	 * wants to create the object of the class SeleniumUtil, he/she can use the
+	 * static method I created
 	 * 
 	 */
 	private static SeleniumUtil seleniumUtil;
@@ -106,19 +107,36 @@ public class SeleniumUtil {
 
 	public void navigateTo(String url) {
 		webDriver.get(url);
+		
 	}
 
 	public void waitFluent() {
 
 		WebDriverWait wait = new WebDriverWait(webDriver, 10);
 		wait.ignoring(NoSuchElementException.class);
+		
 		/*
 		 * Wait<webDriver> wait = new FluentWait<webDriver>(webDriver)
 		 * .withTimeout(30, SECONDS) .pollingEvery(5, SECONDS)
 		 * .ignoring(NoSuchElementException.class);
 		 */
+	
 	}
 
+	// what are the various Wait conditions in selenium - implicit wait apply to
+		// the entire page DOM and explicit wait
+		public void waitConditionInSelenium() {
+			webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			WebDriverWait wait = new WebDriverWait(webDriver, 30);
+			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("")));
+
+			System.out.println("...............................");
+		}
+	
+	
+	
+	
+	
 	@Deprecated
 	public void logInSalesForce(String userName, String passWord) {
 
@@ -136,6 +154,7 @@ public class SeleniumUtil {
 	/**
 	 * This method will use two parameters xPath of a web element and the value
 	 * entered by the user
+	 * 
 	 * @param xPath
 	 * @param value
 	 */
@@ -143,38 +162,82 @@ public class SeleniumUtil {
 		WebElement elementToEnterValue = webDriver.findElement(By.xpath(xPath));
 		elementToEnterValue.sendKeys(value);
 	}
-		// Get web element of input field from given xpath
-		// To enter a value in a input field on a web page, first by the use of
-		// findelementmethod in WebDriver Class, we will get the element of the
-		// the input field
-		
+	// Get web element of input field from given xpath
+	// To enter a value in a input field on a web page, first by the use of
+	// findelementmethod in WebDriver Class, we will get the element of the
+	// the input field
 
-		// Now we will enter a given value into the selected web element by
-		// using sendKeys Method of WebElement Class
-		
-		// elementToEnterValue.
+	// Now we will enter a given value into the selected web element by
+	// using sendKeys Method of WebElement Class
 
-		// WebElement is an Interface; sendKeys method returns Void, we don't
-		// need to assign any object to it.
+	// elementToEnterValue.
 
-	
+	// WebElement is an Interface; sendKeys method returns Void, we don't
+	// need to assign any object to it.
 
 	public void clickElementByXpath(String xPath) {
 		WebElement elementToBeClicked = webDriver.findElement(By.xpath(xPath));
 		elementToBeClicked.click();
 	}
 
+	
+	public void clicksOnSearch(String inputbutton, String txt) {
+		WebElement elementToBeClicked = webDriver.findElement(By.xpath(inputbutton));
+		elementToBeClicked.click();
+		
+		WebElement search = webDriver.findElement(By.xpath(
+				"//INPUT[@id='phSearchInput']"));
+		search.click();
+		search.sendKeys("capitalOne");
+		
+		search.findElement(By.xpath("//INPUT[@id='phSearchButton']"));
+		search.click();
+		
+
+	}
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	public void testAccountPageText(String xpath) {
+		WebElement message = webDriver.findElement(By.xpath(xpath));
+		String messageText = message.getText();
+		assertEquals("Home", messageText);
+
+	}
+	
 	public void testElementText(String xpath) {
 		WebElement message = webDriver.findElement(By.xpath(xpath));
 		String messageText = message.getText();
-		assertEquals("Reports & Dashboard", messageText);
+		assertEquals("Reports & Dashboards", messageText);
 
 	}
 
+	public void testElementTextOnReport(String xpath) {
+		WebElement message = webDriver.findElement(By.xpath(xpath));
+		String messageText = message.getText();
+		assertEquals("Wells Fargo", messageText);
+
+	}
+
+	public void testElementReportGrandTotalText(String xpath) {
+		WebElement message = webDriver.findElement(By.xpath(xpath));
+		String messageText = message.getText();
+		assertEquals("Grand Totals (51 records)", messageText);
+
+	}
+
+	
+	
 	public void testReportstatusElementText(String xpath) {
 		WebElement message = webDriver.findElement(By.xpath(xpath));
 		String messageText = message.getText();
-		assertEquals("complete", messageText);
+		assertEquals("Complete", messageText);
 
 	}
 
@@ -241,7 +304,7 @@ public class SeleniumUtil {
 		String title = (String) js.executeScript("return document.title");
 		assertEquals("Accounts: Home ~ Salesforce - Developer Edition", title);
 		long links = (Long) js.executeScript("var links = document.getElementsByTagName('A'); return links.length");
-		// assertEquals(107, links);
+		assertEquals(107, links);
 		js.executeScript("return window.length");
 
 	}
@@ -260,12 +323,37 @@ public class SeleniumUtil {
 	// Help | Training | Salesforce
 
 	public void IsElementDisplayed(String xPath) {
-		WebElement tabElement = webDriver.findElement(By.xpath(xPath));
+		//WebElement tabElement = webDriver.findElement(By.xpath(xPath));
 
+		WebElement search = webDriver.findElement(By.xpath(
+				"//INPUT[@id='phSearchInput']"));
+		
+		//INPUT[@id='phSearchButton']
+		////INPUT[@id='phSearchInput']
+		search.click();
+		search.sendKeys("capitalOne");
+		search.findElement(By.xpath("INPUT[@id='phSearchButton']"));
+		search.click();
+		
+/*		
+		
+		if (isElementPresent(By.id("phSearchButton"))){
+	WebElement webElement = webDriver.findElement(By.id("phSearchButton"));
+	if(!"Search".isEmpty());
+	webElement.click();
+}
+else{
+	fail("Search!!");
+}
 		if (tabElement == null) {
 			Assert.fail("unable to find element");
 		}
+*/
+	}
 
+	private boolean isElementPresent(By xpath) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	// How do i verify Alert present in the UI
@@ -309,13 +397,76 @@ public class SeleniumUtil {
 	}
 
 	// Window handles in selenium-three methods available
+public void testWindowPopupUsingContents(){
+	String currentWindowId = webDriver.getWindowHandle();
+	WebElement lighteningMigrationButton = webDriver.findElement(By.xpath("//IMG[@src='/img/setup/lightningmigration-cta.svg']"));
+	lighteningMigrationButton.click();
+	Set<String> allWindows = webDriver.getWindowHandles();
+	if (!allWindows.isEmpty()){
+	for(String windowId : allWindows){
+		webDriver.switchTo().window(windowId);
+		if(webDriver.getPageSource().contains("Lightning Experience Migration Assistant")){
+			try{
+				WebElement dismissButton = webDriver.findElement(By.xpath("(//SPAN[@class='dismiss'][text()='Dismiss'][text()='Dismiss'])[1]")); 
+			dismissButton.click();
+				break;
+			}catch(NoSuchWindowException e){
+				e.printStackTrace();
+				}
+			}
+		}
+		
+	}
+	
+assertTrue(webDriver.getTitle().equals("Lightning Experience Migration Assistant"));
+	
+}
+
+
+public void handleSearchByTitle() {
+	String parentWindowId = webDriver.getWindowHandle();
+	// window where i am performing the action
+	WebElement search = webDriver.findElement(By.xpath(
+			"//INPUT[@id='phSearchInput']"));
+	
+	search.click();
+	search.sendKeys("Capital One");
+	search.click();
+
+	Set<String> allWindows = webDriver.getWindowHandles();
+	if (!allWindows.isEmpty()) {
+		for (String windowId : allWindows) {
+			try {
+				if (webDriver.switchTo().window(windowId).getTitle().equals("Clear search terms")) {
+					webDriver.close();
+					break;
+				}
+			} catch (NoSuchWindowException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+	webDriver.switchTo().window(parentWindowId);
+	assertFalse(webDriver.getTitle().equals("Clear search terms"));
+}
+
+
+
+
+
 
 	// Help (New Window)
 	public void handleNewWindowByTitle() {
 		String parentWindowId = webDriver.getWindowHandle();
 		// window where i am performing the action
+		WebDriverWait wait = new WebDriverWait(webDriver, 30);
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//A[@href='javascript:openPopupFocusEscapePounds(%27https://login.salesforce.com/services/auth/sso/00D30000000XsfGEAS/HTAuthProvider?startURL=%252Fapex%252Fhtdoor%253Flanguage%253Den_US%2526release%253D212.9.3%2526instance%253DNA35&site=https%3A%2F%2Fhelp.salesforce.com%27, %27Help%27, 1024, 768, %27width=1024,height=768,resizable=yes,toolbar=yes,status=yes,scrollbars=yes,menubar=yes,directories=no,location=yes,dependant=no%27, false, false);'][text()='Help']")));
+	
 		WebElement Help = webDriver.findElement(By.xpath(
 				"//A[@href='javascript:openPopupFocusEscapePounds(%27https://login.salesforce.com/services/auth/sso/00D30000000XsfGEAS/HTAuthProvider?startURL=%252Fapex%252Fhtdoor%253Flanguage%253Den_US%2526release%253D212.7.8%2526instance%253DNA35&site=https%3A%2F%2Fhelp.salesforce.com%27, %27Help%27, 1024, 768, %27width=1024,height=768,resizable=yes,toolbar=yes,status=yes,scrollbars=yes,menubar=yes,directories=no,location=yes,dependant=no%27, false, false);'][text()='Help']"));
+		
 		Help.click();
 
 		Set<String> allWindows = webDriver.getWindowHandles();
@@ -405,15 +556,7 @@ public class SeleniumUtil {
 		}
 	}
 
-	// what are the various Wait conditions in selenium - implicit wait apply to
-	// the entire page DOM and explicit wait
-	public void waitConditionInSelenium() {
-		webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		WebDriverWait wait = new WebDriverWait(webDriver, 30);
-		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("")));
-
-		System.out.println("...............................");
-	}
+	
 
 	// how do I handle mouse over
 	public void handleMouseOver() {
@@ -426,10 +569,12 @@ public class SeleniumUtil {
 	// how to handle drop down items
 
 	public void handleDropDownItemss() {
-		Select sel = new Select(webDriver.findElement(By.xpath("")));
-		sel.selectByIndex(1);
+		Select sel = new Select(webDriver.findElement(By.xpath("//SELECT[@id='00B410000096B9g_listSelect']")));
+		
+		
+		//sel.selectByIndex(1);
 		// sel.selectByValue("");
-		// sel.selectByVisibleText("Test");
+		sel.selectByVisibleText("view99");
 		// how do i get all data from the drop down
 		sel.getOptions();
 		List<WebElement> op = sel.getOptions();
@@ -449,7 +594,7 @@ public class SeleniumUtil {
 		try {
 			File scrFile = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(scrFile, new File("c:\\SeleniumTest\\Screenshots\\login  " + ".png"));
-			System.out.println("...............................");
+			System.out.println("Successfully taken screen shot");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -518,5 +663,42 @@ public class SeleniumUtil {
 		webDriver.findElement(By.xpath(" ")).sendKeys(Keys.ENTER);
 
 	}
+
+	public void IsElementTextPresent(String enteredText) {
+		boolean textEnteredText = webDriver.findElement(By.xpath("//INPUT[@id='secondSearchText']")).isDisplayed();
+		//String textEnteredText1 = textEnteredText.getText();
+		assertEquals("capitalOne", textEnteredText  );
+	
+	
+	
+	}
+	
+	
+	public void IsElementTextPresent1(String enteredText) {
+		WebElement textEnteredText = webDriver.findElement(By.xpath("//INPUT[@id='secondSearchText']"));
+		String textEnteredText1 = textEnteredText.getText();
+		assertEquals("capitalOne", textEnteredText1  );
+	
+	
+	
+	}
+
+	public void getsLinksDisplayed() {
+		List<WebElement> links = webDriver.findElements(By.tagName("a"));
+		assertEquals(122, links.size());
+		for (WebElement link : links){
+		System.out.println(link.getAttribute("href"));}
+	
+	
+	}
+
+	public void testsElementStyleCSS() {
+		WebElement message = webDriver.findElement(By.className("pbTitle"));
+		String width = message.getCssValue("width");
+		assertEquals("288px", width);
+		
+	}
+
+
 
 }// End of class SeleniumUtil

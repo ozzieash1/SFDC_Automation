@@ -32,5 +32,15 @@ public interface Accounts {
 
 	void testAccountPagetext(String text);
 	
+	void clicksOnCreateNewView();
+	
+	void clicksOnSaveOnCreateNewView();
+	
+	void selectsnewlyCreatedView();
+	
+	void clicksOnViewName();
+	public void getsLinksDisplayed();
+	public void testsElementStyleCSS();
+	
 	
 }

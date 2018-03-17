@@ -13,7 +13,7 @@ import sfdc.automation.impl.LogInImpl;
 
 public class AccountsSteps {
 
-	Accounts accountsImpl = new AccountsImpl();
+	AccountsImpl accountsImpl = new AccountsImpl();
 
 	@And("^user click on Accounts tab$")
 	public void clickOnAccountsTab() throws Throwable {
@@ -73,6 +73,62 @@ public class AccountsSteps {
 		accountsImpl.selectFromCustomerPriorityDropdown(customerPrioritySelected);
 
 	}
+
+	
+	@Given("^user clicks on Create New View$")
+	public void clicksOnCreateNewView() throws Throwable {
+	  accountsImpl.clicksOnCreateNewView();
+	}
+	
+	@Given("^user enters \"([^\"]*)\" for View Name$")
+	public void entersNewViewName(String newViewName) throws Throwable {
+	  accountsImpl.entersNewViewName(newViewName);
+	}
+
+	@Given("^user checks radio button My accounts$")
+	public void user_checks_radio_button_My_accounts() throws Throwable {
+	
+	}
+
+	@Given("^user clicks on Save$")
+	public void clicksOnSaveOnCreateNewView() throws Throwable {
+	 accountsImpl.clicksOnSaveOnCreateNewView();
+	}
+
+	@Given("^user selects newly created view from dropdown$")
+	public void selectsnewlyCreatedView() throws Throwable {
+	 accountsImpl.selectsnewlyCreatedView();
+	
+	
+	}
+
+	@Given("^user views error message$")
+	public void user_views_error_message() throws Throwable {
+	 
+	}
+
+	@Given("^user clicks on ViewName$")
+	public void clicksOnViewName() throws Throwable {
+	accountsImpl.clicksOnViewName();
+	 
+	}
+
+
+	//user gets links displayed in Page
+
+	@Given("^user gets links displayed in Page$")
+	public void getsLinksDisplayed() throws Throwable {
+	accountsImpl.getsLinksDisplayed();
+	 
+	}
+
+	//user tests ElementStyleCSS
+	@Given("^user tests ElementStyleCSS$")
+	public void testsElementStyleCSS() throws Throwable {
+	accountsImpl.testsElementStyleCSS();
+	 
+	}
+
 
 }
 

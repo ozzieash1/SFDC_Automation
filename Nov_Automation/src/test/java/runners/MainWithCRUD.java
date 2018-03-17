@@ -106,10 +106,10 @@ public class MainWithCRUD {
 
 		// Run codes to query, insert, update and delete records in Salesforce
 		// using REST API
-		//queryLeads();
-		//createLeads();
-		//updateLeads();
-		deleteLeads();
+		queryLeads();//this query is selecting Lead Data by HTTP Get Method call and retrieving up to 5 rows of data
+		createLeads(); //this one is inserting a new Lead meaning Post HTTP Method call- Analogy is like Adding a new shelf to the kitchen
+		updateLeads(); //this is put HTTP Method call Put- Analogy is putting (update) Cookie jar on the shelf  
+		deleteLeads(); //Delete HTTP Method Call
 
 		// release connection
 		httpPost.releaseConnection();
